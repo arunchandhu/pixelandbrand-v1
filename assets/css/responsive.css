@@ -34,6 +34,30 @@
         font-size: 14px;
     }
 }
+/* Desktop styles */
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 10px 0;
+  background: transparent;
+  z-index: 99;
+  transition: background 0.3s ease;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+nav.color {
+  background: #fff;
+}
+
+/* Hides close and nav menu on desktop */
+.menu.close,
+.nav-list ul {
+  display: none;
+}
+
+/* Responsive Styles */
 @media (max-width: 768px) {
   .nav-items .nav-list ul {
     display: flex;
@@ -47,19 +71,31 @@
     top: 0;
     left: 0;
     transform: scaleY(0);
+    transform-origin: top;
+    transition: transform 0.3s ease-in-out;
+    z-index: 1;
   }
-  .navitems .nav-list ul.open{
+
+  .nav-list ul.open {
     transform: scaleY(1);
-    transition: 0.3s ease-in;
   }
-  .menu.toggle{
+
+  .menu.toggle {
     display: block;
-  }
-  .menu.close{
+    cursor: pointer;
     z-index: 2;
+  }
+
+  .menu.close {
+    display: none;
     position: absolute;
     top: 20px;
     right: 20px;
+    z-index: 3;
+    cursor: pointer;
+  }
 
+  .menu.close.show {
+    display: block;
   }
 }
