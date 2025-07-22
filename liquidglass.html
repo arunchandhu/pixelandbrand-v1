@@ -1,59 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Glassmorphism Water Drop</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-    <style>
-        /* Make sure html and body take full height */
-html, body {
-  height: 100%;
+  <style>
+    body {
   margin: 0;
-  font-family: Arial, sans-serif;
+  height: 100vh;
+  background: linear-gradient(135deg, #89f7fe 0%, #66a6ff 100%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: sans-serif;
 }
 
-/* Background behind the glass */
-body {
-  /* You can set a background image, gradient or color */
-  
-  background-size: cover;
-}
-
-/* Liquid glass container covering entire viewport */
-.liquid-glass {
-  position: fixed;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background: rgba(255, 255, 255, 0.15);  /* white with transparency */
-  backdrop-filter: blur(10px); /* This is the key */
-  -webkit-backdrop-filter: blur(10px); /* Safari support */
-  border-radius: 0;
-  border: 1px solid rgba(255, 255, 255, 0.3); /* subtle border */
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-  z-index: -1; /* behind your content */
-}
-
-/* Your content styles */
-.content {
-  position: relative;
-  z-index: 1;
-  color: #fff;
+.glass-box {
+  width: 300px;
   padding: 2rem;
-  max-width: 600px;
-  margin: 5rem auto;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
   text-align: center;
-  /* Optional subtle text-shadow for readability */
-  text-shadow: 0 0 5px rgba(0,0,0,0.7);
+  color: white;
 }
 
-    </style>
-    <div class="liquid-glass"></div>
-  
-  <div class="content">
-    <h1>Welcome to Liquid Glass Effect</h1>
-    <p>This whole page has a beautiful frosted glass effect!</p>
+.glass-box h2 {
+  margin-bottom: 10px;
+  font-size: 1.5rem;
+}
+
+  </style>
+  <div class="glass-box">
+    <h2>Water Drop</h2>
+    <p>This is a glass effect block.</p>
   </div>
 </body>
 </html>

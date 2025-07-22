@@ -128,11 +128,63 @@ nav.color {
     padding: 10px;
 
   }
- 
- 
-  .display-hero{
-    
-    
-    
+}
+
+/* Service Content */
+@media (max-width: 768px) {
+  .service-content {
+    grid-template-columns: 1fr;
+    row-gap: 20px;
+    width: 100%;
   }
+
+  .service-content h1 {
+    text-align: center;
+  }
+
+  .service-content.work h1 {
+    text-align: center;
+  }
+
+  .service-content p {
+    text-align: center;
+  }
+
+  .service-content.work {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .service-content.work {
+    flex-direction: column-reverse;
+  }
+
+  .service-content.work p::after,
+  .service-content p::before {
+    background: transparent;
+  }
+}
+
+/* Tesimonial */
+
+/* Mobile Responsive */
+@media (max-width: 767px) {
+  .carousel-caption {
+    padding: 3rem 2rem;
+    font-size: 0.7rem;
+    line-height: 1.5rem;
+  }
+
+  .carousel-caption img {
+    width: 4rem;
+    border-radius: 4rem;
+    margin-top: 1rem;
+  }
+
+  #image-caption {
+    font-size: 0.6rem;
+  }
+  footer .footer-logo p {
+  padding-left: 0px;
+}
 }
