@@ -297,7 +297,7 @@ section {
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   position: relative;
-  padding: 300px 0;
+  padding: 100px 0;
 }
 .hero-section {
   display: flex;
@@ -319,7 +319,7 @@ section {
 .hero-img img{
   display: block;
   width: 100%;
-  max-width: 380px;
+  max-width: 280px;
 }
 .hero-text{
   display: flex;
@@ -353,11 +353,12 @@ section {
 
 .display-social-media ul {
   position: absolute;
-  bottom: 50px;
+  bottom: 20px;
   display: flex;
   gap: 50px;
   margin: 0;
   padding: 0;
+  
 }
 
 .display-social-media li a i {
