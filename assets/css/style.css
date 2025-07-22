@@ -181,10 +181,12 @@ nav {
   left: 0;
   width: 100%;
   padding: 10px 0;
-  background: transparent;
+  background: linear-gradient(rgba(225,225,225,0.15), rgba(225,225,225,0.15));
+  backdrop-filter: blur(10px);
   z-index: 99;
   transition: background 0.3s ease;
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+
 }
 
 nav.color {
@@ -199,7 +201,6 @@ nav.color {
 
 
 .nav-items {
-
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -209,6 +210,7 @@ nav.color {
 nav .logo.first img {
   width: 100px;
   display: block;
+  
 }
 
 /* Hide first logo when .close class is added */
@@ -286,82 +288,53 @@ section {
 /* home */
 #home {
   width: 100%;
-  /* height: 80vh; */
-  background: url('../images/display-1.jpg') no-repeat center center/cover;
-      height: 80vh;
-  /* background: linear-gradient(rgba(225,225,225,0.15), rgba(225,225,225,0.15)); */
+  background: url("../images/display-1.jpg");
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   overflow: hidden;
-}
-
-.display-hero {
   position: relative;
+  padding: 300px 0;
+}
+.hero-section{
   display: flex;
-  flex-direction: column;
-  align-items: start;
+  align-items: center;
   justify-content: center;
-   text-align: start;
+}
+.hero-content{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: center;
+  justify-content: center;
 }
 .subscribe{
-  position: relative;
-  left: 50%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 }
+
+
 .subscribe input{
   max-width: 300px;
   width: 100%;
-  padding: 20px 0;
+  padding: 20px 20px;
   border: none;
   outline: none;
 }
 .subscribe input::placeholder{
   padding-left: 10px;
 }
-.subscribe button{
-  max-width: 300px;
-  width: 100%;
-  border: none;
-  outline: none;
-  padding: 20px 0;
-  text-align: center;
-  background: linear-gradient(rgba(225,225,225,0.15), rgba(225, 225, 225, 0.15));
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(10px);
-  cursor: pointer;
-}
-.subscribe button::before{
-  content: '';
+
+.display-social-media ul{
   position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 300px;
-  height:auto;
-  background: radial-gradient(circle at center, rgba(255, 255, 255, 0.3) 0%, transparent 70%);
-  transform: scale(0);
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 0;
-  overflow: hidden;
-}
-.subscribe button:hover::before{
-  transform: scale(1);
-  transition: transform 0.5s ease;
-}
-.subscribe button:hover{
-  background: rgba(255, 255, 255, 0.25);
-  color: #1d1d1d;
-}
-.display-social-media{
-  position: absolute;
-  bottom: 200px;
+  bottom: 50px;
   display: flex;
-  gap: 20px;
+  gap: 50px;
+  margin: 0;
+  padding: 0;
 }
 .display-social-media li a i{
   color: #f5f5f7;
+  cursor: pointer;
 }
 .display-social-media li a{
   width: 50px;
@@ -370,124 +343,11 @@ section {
   align-items: center;
   justify-content: center;
   text-align: center;
-  background: linear-gradient(rgba(225,225,225,0.15), rgba(225,225,225,0.15));
+  background: linear-gradient(rgba(225,225,225,0.9), rgba(225,225,225,0.9));
   border-radius: 50%;
   backdrop-filter: blur(10px);
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-}
-
-
-
-
-
-/* CSS */
-.button.cta {
-  background: rgba(255, 255, 255, 0.15);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-  color: #1d1d1d;
-  padding: 6px 16px;
-  /* smaller padding for smaller button */
-  border-radius: 25px;
-  /* smaller radius but still pill shape */
-  cursor: pointer;
-  transition: all 0.3s ease;
-  position: relative;
   overflow: hidden;
-  display: inline-flex;
-  /* flex for perfect centering */
-  align-items: center;
-  justify-content: center;
-  font-size: 14px;
-  /* reasonable font size */
-  line-height: 1;
-  /* tight line height */
-  user-select: none;
-  text-align: center;
-  white-space: nowrap;
-}
-
-.button.cta:before {
-  content: '';
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: radial-gradient(circle at center, rgba(255, 255, 255, 0.3) 0%, transparent 70%);
-  transform: scale(0);
-  transition: transform 0.5s ease;
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 0;
-}
-
-.button.cta:hover::before {
-  transform: scale(1);
-}
-
-.button.cta:hover {
-  background: rgba(255, 255, 255, 0.25);
-  color: #1d1d1d;
-}
-
-.button.cta a {
-  font-size: inherit;
-  color: inherit;
-  text-decoration: none;
-  z-index: 1;
-  /* keep text above the ::before */
-}
-
-.btn {
-  background: rgba(255, 255, 255, 0.15);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-  color: #1D1D18;
-  padding: 15px 30px;
-  border-radius: 12px;
-  font-size: 1.1rem;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  position: relative;
-  overflow: hidden;
-}
-
-.btn:before {
-  content: '';
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: radial-gradient(circle at center, rgba(255, 255, 255, 0.3) 0%, transparent 70%);
-  transform: scale(0);
-  transition: transform 0.5s ease;
-  border-radius: 50%;
-  pointer-events: none;
-}
-
-/* .btn:hover {
-    box-shadow: rgba(255, 255, 255, .2) 0 3px 15px inset, rgba(0, 0, 0, .1) 0 3px 5px, rgba(0, 0, 0, .1) 0 10px 13px;
-    transform: scale(1.05);
-    color: #fff;
-} */
-.btn:hover::before {
-  transform: scale(1);
-}
-
-.btn:hover {
-  background: rgba(255, 255, 255, 0.25);
-}
-
-@media (min-width: 768px) {
-  .btn {
-    padding: 16px 48px;
-  }
 }
 
 
