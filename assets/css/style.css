@@ -153,6 +153,15 @@ p {
 .p-50 {
   padding: 50px 0;
 }
+.pt-50{
+  padding-top: 50px;
+}
+.pb-50{
+  padding-bottom: 50px;
+}
+.service-page {
+  padding: 50px 0;
+}
 
 ul,
 li,
@@ -465,9 +474,12 @@ section {
   bottom: 0;
   left: -20px;
   width: 1px;
-  height: 100px;
+  height: 100%;
   background: #777;
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
 
 }
 
@@ -1019,26 +1031,32 @@ footer .footer-logo p {
   height: 100%;
   border-radius: 10px;
 }
-
-
-.service-page {
-  padding: 50px 0;
+.box{
+  width: 100%;
+  min-height: 250px;
+  height: 100%;
+  padding: 30px 30px;
+  background: linear-gradient(rgba(225,225,225,0.15), rgba(225,225,225,0.15));
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  backdrop-filter: blur(10px);
+  margin-bottom: 30px;
+  overflow: hidden;
+  border-radius: 10px;
+}
+.box h3{
+  text-align: start;
+  padding-bottom: 10px;
+}
+.box p{
+  text-align: justify;
 }
 
-/* Subscription Page Section */
-@import url("https://fonts.googleapis.com/css2?family=Mulish:wght@400;700&display=swap");
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
 
-body {
-  font-family: "Mulish", sans-serif !important;
-  background-color: #f7f8fc !important;
-  color: #10182f !important;
-}
+
+/* ========================= */
+/* Subscribe Section Page */
+/* ========================= */
 
 main {
   margin-top: 5rem;
