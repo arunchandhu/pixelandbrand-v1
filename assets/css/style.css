@@ -223,13 +223,6 @@ nav.color {
   background: #fff;
 }
 
-/* Hides close and nav menu on desktop */
-.menu.close,
-.nav-list ul {
-  display: none;
-}
-
-
 .nav-items {
   display: flex;
   align-items: center;
@@ -327,29 +320,17 @@ nav .logo.second.open img {
 .menu {
   border: none;
   outline: none;
-  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
   padding: 10px;
   cursor: pointer;
   font-size: 16px;
   color: #1D1D18;
+  background: transparent;
 
 
 }
 
 .menu.toggle {
   display: none;
-}
-
-.menu.close {
-  width: 50px;
-  height: 50px;
-  border-radius: 10px;
-  display: none;
-}
-
-.menu.close:hover {
-  transition: 0.3s linear;
-  transform: scale(1.05);
 }
 
 section {
@@ -424,13 +405,13 @@ section {
 }
 
 .display-social-media ul {
-  position: absolute;
-  bottom: 50px;
+  /* position: absolute;
+  bottom: 50px; */
   display: flex;
   gap: 50px;
   margin: 0;
   padding: 0;
-  left: 20%;
+  /* left: 20%; */
 
 }
 
@@ -946,9 +927,11 @@ footer .footer-logo p {
 }
 .contact-box{
   width: 100%;
+  text-align: center;
 }
 
 .contact-info{
+  width: 100%;
   background: linear-gradient(rgba(225, 225, 225, 0.15), rgba(225, 225, 225, 0.15));
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
   backdrop-filter: blur(10px);

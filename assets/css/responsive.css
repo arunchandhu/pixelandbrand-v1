@@ -118,6 +118,9 @@ nav.color {
   #image-caption {
     font-size: 0.6rem;
   }
+  footer{
+    padding: 40px 0 30px 0;
+  }
 
   footer .footer-logo p {
     padding-left: 0px;
@@ -127,12 +130,7 @@ nav.color {
 /* =========================== */
 /* Responsive Styles */
 /* =========================== */
-@media (max-width: 991px){
-  .display-social-media ul {
-  left:   10% ;
 
-}
-}
 @media (max-width: 768px) {
   .nav-items .nav-list ul {
     display: none;
@@ -214,7 +212,7 @@ nav.color {
   }
 
   #home {
-    padding: 150px 0;
+    padding: 100px 0 80px 0;
   }
 
   .hero-img img {
@@ -243,17 +241,6 @@ nav.color {
     height: auto;
   }
 
-  .display-social-media ul {
-    text-align: center;
-    margin: 0 auto;
-    width: 100%;
-    left: 15%;
-
-  }
-
-  .display-social-media li a {
-
-  }
 
   .whats-app a {
     width: 30px;
@@ -265,8 +252,13 @@ nav.color {
     min-width: 200px;
     margin: 50px 0 0 0;
   }
-  .display{
+
+  .display {
     padding: 100px 0 50px 0;
+  }
+
+  .service-page {
+    padding: 50px 0 0 0;
   }
 }
 
