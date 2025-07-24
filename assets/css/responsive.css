@@ -127,6 +127,12 @@ nav.color {
 /* =========================== */
 /* Responsive Styles */
 /* =========================== */
+@media (max-width: 991px){
+  .display-social-media ul {
+  left:   10% ;
+
+}
+}
 @media (max-width: 768px) {
   .nav-items .nav-list ul {
     display: none;
@@ -238,20 +244,14 @@ nav.color {
   }
 
   .display-social-media ul {
-    flex-direction: column;
-    left: 0;
-    box-shadow: 0 0 15px 0 #000;
-    padding: 15px;
-    display: none;
-
+    text-align: center;
+    margin: 0 auto;
+    width: 100%;
+    left: 15%;
 
   }
 
   .display-social-media li a {
-    width: unset;
-    height: unset;
-    background: #fefefe;
-    padding: 10px;
 
   }
 
@@ -264,6 +264,9 @@ nav.color {
   .contact-form {
     min-width: 200px;
     margin: 50px 0 0 0;
+  }
+  .display{
+    padding: 100px 0 50px 0;
   }
 }
 

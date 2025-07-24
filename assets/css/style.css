@@ -291,29 +291,31 @@ nav .logo.second.open img {
 .drop-down{
   position: relative;
 }
-.drop-down-list{
+.drop-down-list {
+  display: flex;
   flex-direction: column;
   position: absolute;
   margin: 0;
-  padding: 0;
+  padding: 20px 0;
   width: 100%;
   min-width: 300px;
   background: #d7d8d6;
   backdrop-filter: blur(10px);
   top: 39.5px;
   gap: 10px !important;
-  padding:  20px 0 !important;
-  opacity: 0;
+  transform-origin: top;
+  transform: scaleY(0);
   overflow: hidden;
-  
-  
+  transition: transform 0.3s ease;
+  z-index: 10;
+  padding: 20px 0 !important;
+}
+
+.drop-down:hover .drop-down-list {
+  transform: scaleY(1);
 }
 .drop-down-list.color{
   background: #fff !important;
-}
-.drop-down:hover .drop-down-list{
-  opacity: 1;
-  transition: 0.3s ease;
 }
 .drop-down ul li{
   padding-bottom: 10px;
@@ -942,11 +944,11 @@ footer .footer-logo p {
   width: 100%;
   height: 450px;
 }
+.contact-box{
+  width: 100%;
+}
 
 .contact-info{
-  min-width: 350px;
-  width: 100%;
-  height: 250px;
   background: linear-gradient(rgba(225, 225, 225, 0.15), rgba(225, 225, 225, 0.15));
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
   backdrop-filter: blur(10px);
@@ -955,7 +957,7 @@ footer .footer-logo p {
   justify-content: center;
   flex-direction: column;
   text-align: center;
-  padding: 20px;
+  padding: 30px 50px 40px 30px;
   margin-bottom: 20px;
   border-radius: 10px;
 }
