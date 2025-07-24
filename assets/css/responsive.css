@@ -65,6 +65,7 @@ nav.color {
     grid-template-columns: 1fr;
     row-gap: 20px;
     width: 100%;
+    padding: 50px 0;
   }
 
   .service-content h1 {
@@ -98,6 +99,10 @@ nav.color {
 
 /* Mobile Responsive */
 @media (max-width: 767px) {
+  .testimonial {
+    padding: 0;
+  }
+
   .carousel-caption {
     padding: 3rem 2rem;
     font-size: 0.7rem;
@@ -124,43 +129,82 @@ nav.color {
 /* =========================== */
 @media (max-width: 768px) {
   .nav-items .nav-list ul {
+    display: none;
+
+  }
+
+  .mobile-menu {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    position: absolute;
-    width: 100%;
-    height: 100vh;
-    background: #fff;
+    position: fixed;
     top: 0;
     left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 9;
+    background: #fff;
+    text-align: center;
     transform: scaleY(0);
     transform-origin: top;
-    transition: transform 0.3s ease-in-out;
-    z-index: 1;
+    /* Add this for better effect */
+    transition: transform 0.3s ease;
+    /* <-- Moved here */
   }
 
-  .nav-list ul.open {
+  .mobile-menu.open {
     transform: scaleY(1);
+  }
+
+  .mobile-menu ul {
+    margin: 0;
+    padding: 0;
+
+  }
+
+  .mobile-menu ul li {
+    text-align: center;
+    padding-bottom: 20px;
+  }
+
+  .mobile-drop-down-list {
+    padding: 10px 0 !important;
+    transition: transfrom 0.3s ease;
+    display: none;
+    max-height: 0;
+    transform-origin: top;
+    transform: scaleY(0);
+  }
+
+  .mobile-drop-down-list.open {
+    display: block;
+    max-height: 500px;
+    transform: scaleY(1);
+  }
+
+  .drop-down-list {
+    flex-direction: column;
+    position: relative;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    background: unset;
+    backdrop-filter: unset;
+    box-shadow: unset;
+    top: 100px;
+    gap: 10px !important;
+    padding: 20px 0 !important;
+    z-index: 1;
+    opacity: 0;
+    overflow: hidden;
+
   }
 
   .menu.toggle {
     display: block;
     cursor: pointer;
     z-index: 2;
-  }
-
-  .menu.close {
-    display: none;
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    z-index: 3;
-    cursor: pointer;
-  }
-
-  .menu.close.show {
-    display: block;
   }
 
   #home {
@@ -185,6 +229,14 @@ nav.color {
     padding: 0;
   }
 
+  .subscribe {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: auto;
+  }
+
   .display-social-media ul {
     flex-direction: column;
     left: 0;
@@ -206,11 +258,13 @@ nav.color {
   .whats-app a {
     width: 30px;
     height: 30px;
+    padding: 5px;
   }
+
   .contact-form {
-   min-width: 200px;
-   margin: 50px 0 0 0;
-}
+    min-width: 200px;
+    margin: 50px 0 0 0;
+  }
 }
 
 /* =========================== */
