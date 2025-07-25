@@ -786,7 +786,7 @@ footer a {
 
 
 footer .footer-logo a img {
-  width: 150px;
+  width: 120px;
   text-align: start;
   display: block;
   margin-bottom: 10px;
@@ -794,8 +794,7 @@ footer .footer-logo a img {
 
 footer .footer-logo p {
   font-size: 14px;
-  padding-left: 10px;
-  text-align: start;
+  text-align: justify;
 }
 
 .social-media {
@@ -810,7 +809,6 @@ footer .footer-logo p {
   padding: 0;
   list-style: none;
   gap: 20px;
-  padding-left: 10px;
 }
 
 
