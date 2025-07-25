@@ -1063,11 +1063,11 @@ input[type=number]::-webkit-outer-spin-button {
 .offer li{
   display: flex;
   gap: 10px;
-  align-items: center;
   padding-bottom: 10px;
 }
 .offer li i{
   font-size: 14px;
+  margin-top: 5px;
 }
 /* ======================= */
 /* About Page Section */
