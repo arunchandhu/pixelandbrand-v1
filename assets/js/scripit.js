@@ -76,17 +76,19 @@ document.getElementById("year").innerHTML = new Date().getFullYear();
 // ===========================
 
 // POST helper
-  async function postData(url, data) {
-    const res = await fetch(url, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(data),
-    });
-    return res.json();
-  }
+async function postData(url, data) {
+  const res = await fetch(url, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(data),
+  });
+  return res.json();
+}
 
-  // Contact Form Submit
-  document.getElementById("contactForm").addEventListener("submit", function (e) {
+// Contact Form Submit
+const contactForm = document.getElementById("contactForm");
+if (contactForm) {
+  contactForm.addEventListener("submit", function (e) {
     e.preventDefault();
     grecaptcha.ready(function () {
       grecaptcha.execute("YOUR_SITE_KEY", { action: "submit" }).then(async function (token) {
@@ -103,9 +105,12 @@ document.getElementById("year").innerHTML = new Date().getFullYear();
       });
     });
   });
+}
 
-  // Subscribe Form Submit
-  document.getElementById("subscribeForm").addEventListener("submit", function (e) {
+// Subscribe Form Submit
+const subscribeForm = document.getElementById("subscribeForm");
+if (subscribeForm) {
+  subscribeForm.addEventListener("submit", function (e) {
     e.preventDefault();
     grecaptcha.ready(function () {
       grecaptcha.execute("YOUR_SITE_KEY", { action: "submit" }).then(async function (token) {
@@ -119,3 +124,4 @@ document.getElementById("year").innerHTML = new Date().getFullYear();
       });
     });
   });
+}
