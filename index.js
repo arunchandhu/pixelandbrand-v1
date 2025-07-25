@@ -1,23 +1,47 @@
 const express = require("express");
 const nodemailer = require("nodemailer");
 const cors = require("cors");
+const rateLimit = require("express-rate-limit");
 
 const app = express();
 app.use(cors());
 app.use(express.json());
 
-app.post("/send-email", async (req, res) => {
-  const { email } = req.body;
+// Rate limiting to prevent spam: max 5 requests per 10 minutes per IP
+const limiter = rateLimit({
+  windowMs: 10 * 60 * 1000,
+  max: 5,
+  message: "Too many requests, please try again later.",
+});
+app.use(limiter);
 
-  let transporter = nodemailer.createTransport({
-    service: "gmail",
-    auth: {
-      user: "yourgmail@gmail.com", // Replace with your email
-      pass: "yourapppassword",     // Use an App Password (not your Gmail password)
-    },
-  });
+// Nodemailer setup — use your Gmail & App Password here
+const transporter = nodemailer.createTransport({
+  service: "gmail",
+  auth: {
+    user: "chandhuarun120@gmail.com",
+    pass: "yourapppassword",
+  },
+});
 
-  let mailOptions = {
+// Spam check helper: returns true if honeypot field is filled (bot)
+function isSpam(body) {
+  return body.website && body.website.trim() !== "";
+}
+
+// Endpoint for subscription form (only email)
+app.post("/subscribe", async (req, res) => {
+  const { email, website } = req.body;
+
+  if (isSpam(req.body)) {
+    return res.status(400).send("Spam detected.");
+  }
+
+  if (!email || !/\S+@\S+\.\S+/.test(email)) {
+    return res.status(400).send("Invalid email.");
+  }
+
+  const mailOptions = {
     from: "yourgmail@gmail.com",
     to: "chandhuarun120@gmail.com",
     subject: "New Subscription",
@@ -26,14 +50,49 @@ app.post("/send-email", async (req, res) => {
 
   try {
     await transporter.sendMail(mailOptions);
-    res.send("Email sent!");
+    res.send("Subscription email sent!");
   } catch (error) {
     console.error(error);
-    res.status(500).send("Failed to send email.");
+    res.status(500).send("Failed to send subscription email.");
   }
 });
 
-app.listen(3000, () => {
-  console.log("Server running on http://localhost:3000");
+// Endpoint for contact form (name, email, phone, service)
+app.post("/contact", async (req, res) => {
+  const { name, email, phone, service, website } = req.body;
+
+  if (isSpam(req.body)) {
+    return res.status(400).send("Spam detected.");
+  }
+
+  if (
+    !name ||
+    !email ||
+    !phone ||
+    !service ||
+    !/\S+@\S+\.\S+/.test(email) ||
+    !/^\d{10}$/.test(phone)
+  ) {
+    return res.status(400).send("Please fill out all fields correctly.");
+  }
+
+  const mailOptions = {
+    from: "yourgmail@gmail.com",
+    to: "chandhuarun120@gmail.com",
+    subject: "New Contact Form Submission",
+    text: `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\nService: ${service}`,
+  };
+
+  try {
+    await transporter.sendMail(mailOptions);
+    res.send("Contact form email sent!");
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("Failed to send contact form email.");
+  }
 });
 
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`Server running on http://localhost:${PORT}`);
+});

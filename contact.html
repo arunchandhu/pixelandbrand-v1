@@ -27,17 +27,7 @@
           <ul>
             <li><a href="agency.html">The Agency</a></li>
             <li><a href="subscriptions.html">Subscriptions </a></li>
-            <li class="drop-down"><a href="services.html">What we Do</a> <span><i
-                  class="fa-solid fa-caret-down"></i></span>
-              <ul class="drop-down-list">
-                <li><a href="branding.html">Branding &amp; Creative Design</a></li>
-                <li><a href="smm.html">Social Media Management</a></li>
-                <li><a href="seo.html">SEO &amp; Content Marketing</a></li>
-                <li><a href="webdeveloping.html">Website Design &amp; Development</a></li>
-                <li><a href="videoproduction.html">Video Production</a></li>
-                <li><a href="digitalmarketing.html">Digital Marketing Strategy</a></li>
-              </ul>
-            </li>
+            <li class="drop-down"><a href="services.html">What we Do</a> </li>
             <li><a href="projects.html">Projects</a></li>
           </ul>
           <button class="menu toggle">
@@ -45,7 +35,7 @@
           </button>
         </div>
         <div class="button cta">
-          <a href="contact.html" class="call">Say Hello !</a>
+          <a href="contact.html" class="call">Get In Touch</a>
         </div>
       </div>
     </div>
@@ -54,22 +44,14 @@
   <!-- Mobile Menu -->
   <div class="mobile-menu">
     <ul>
-    <li><a href="agency.html">The Agency</a></li>
-    <li><a href="subscriptions.html">Subscriptions </a></li>
-    <li class="mobile-drop-down"><a href="#">What we Do</a> <span><i class="fa-solid fa-caret-down"></i></span>
-      <ul class="mobile-drop-down-list">
-        <li><a href="branding.html">Branding &amp; Creative Design</a></li>
-        <li><a href="smm.html">Social Media Management</a></li>
-        <li><a href="seo.html">SEO &amp; Content Marketing</a></li>
-        <li><a href="webdeveloping.html">Website Design &amp; Development</a></li>
-        <li><a href="videoproduction.html">Video Production</a></li>
-        <li><a href="digitalmarketing.html">Digital Marketing Strategy</a></li>
-      </ul>
-    </li>
-    <li><a href="projects.html">Projects</a></li>
-  </ul>
+      <li><a href="agency.html">The Agency</a></li>
+      <li><a href="subscriptions.html">Subscriptions </a></li>
+      <li class="mobile-drop-down"><a href="services.html">What we Do</a></li>
+      <li><a href="projects.html">Projects</a></li>
+    </ul>
   </div>
   <!-- Mobile Menu -->
+
   <!-- Contact -->
   <div class="liquid-glass"></div>
   <button id="scrollBtn" title="Go to top">▲</button>
@@ -86,73 +68,52 @@
   <section id="contact" class="service-page">
     <div class="container">
       <div class="row">
-        <div class="col-lg-10 col-md-12 mx-auto text-center mb-4">
-          <h1>Where We Are? <br> Let's Find Out!</h1>
-        </div>
-         <div class="col-md-6">
-          <div class="col-md-4 contact-box">
-              <div class="contact-info">
-                 <h3 class="mt-4">Contact Us</h3>
-            <ul>
-              <li>
-                <i class="fa-solid fa-phone"></i>
-                <a href="tel:++918086488003" target="_blank">+91 80864-88003</a>
-              </li>
-            </ul>
-              </div>
-            </div>
-            <div class="col-md-4 contact-box">
-              <div class="contact-info">
-                 <h3 class="mt-4">Email</h3>
-            <ul>
-                <i class="fa-solid fa-envelope"></i>
-                <a href="mailto:info@craftrix.com" target="_blank">info@craftrix.com</a>
-              </li>
-            </ul>
-              </div>
-            </div>
-            <div class="col-md-4 contact-box">
-              <div class="contact-info">
-                 <h3 class="mt-4">Address</h3>
-            <ul>
-              <li>
-                <i class="fa-solid fa-thumbtack"></i>
-                <a href="#">Pixel and Band Services Pvt <br class="d-none d-md-block">
-                  Udarasiromani Rd, Thiruvananthapuram, Kerala 695010</a>
-              </li>
-            </ul>
-              </div>
-            </div>
-        </div>
-        <div class="col-md-6 mb-4">
+        <div class="col-lg-10 col-md-12 mx-auto mb-4">
           <div class="message">
             <div class="contact-form">
               <h2>Message</h2>
-              <form action="post">
+              <form id="contactForm">
                 <div class="row">
-                  <div class="col-md-6 col-sm-12">
-                    <input type="text" placeholder="Name">
+                  <div class="col-md-6">
+                    <input type="text" id="contactName" name="name" placeholder="Name" required>
                   </div>
-                  <div class="col-md-6 col-sm-12">
-                    <input type="number" placeholder="Phone Number">
-                  </div>
-                  <div class="col-md-12">
-                    <input type="email" placeholder="Email Address">
-                  </div>
-                  <div class="col-md-12">
-                    <textarea name="text" id="message" rows="5" placeholder="Message"></textarea>
-                  </div>
+                <div class="col-md-6">
+                  <input type="email" id="contactEmail" name="email" placeholder="Email Address" required>
                 </div>
-                <button type="submit"> Contact Us</button>
+                <div class="col-md-6">
+                  <input type="tel" id="contactPhone" name="phone" placeholder="Phone Number (10 digits)" pattern="\d{10}"
+                  maxlength="10" required>
+                </div>
+                <div class="col-md-6">
+                  <select name="service" id="contactService" required>
+                  <option value="" disabled selected hidden>-- Select a service --</option>
+                  <option value="branding">Branding &amp; Creative Design</option>
+                  <option value="smm">Social Media Management</option>
+                  <option value="seo">SEO &amp; Content Marketing</option>
+                  <option value="website">Website Design &amp; Development</option>
+                  <option value="video">Video Production</option>
+                  <option value="dms">Digital Marketing Strategy</option>
+                  <option value="other">Other</option>
+                </select>
+                </div>
+                </div>
+                <!-- Honeypot -->
+                <input type="text" name="website" style="display:none" autocomplete="off">
+                <button type="submit">Contact Us</button>
               </form>
             </div>
           </div>
         </div>
-        <!-- <div class="col-lg-12">
-          <div class="row mt-5">
-            <div class="col-md-4">
-              <div class="contact-info">
-                 <h3 class="mt-4">Contact Us</h3>
+      </div>
+      <div class="row">
+        <div class="col-lg-10 col-md-12 mx-auto text-center mb-4">
+          <div class="p-20"></div>
+          <h1>Where We Are? <br> Let's Find Out!</h1>
+          <div class="p-20"></div>
+        </div>
+        <div class="col-md-4">
+          <div class="contact-info">
+            <h3 class="mt-4">Contact Us</h3>
             <ul>
               <li>
                 <i class="fa-solid fa-phone"></i>
@@ -163,21 +124,21 @@
                 <a href="tel:+919995664126" target="_blank">+91 9995-664126</a>
               </li>
             </ul>
-              </div>
-            </div>
-            <div class="col-md-4">
-              <div class="contact-info">
-                 <h3 class="mt-4">Email</h3>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="contact-info">
+            <h3 class="mt-4">Email</h3>
             <ul>
-                <i class="fa-solid fa-envelope"></i>
-                <a href="mailto:info@craftrix.com" target="_blank">info@craftrix.com</a>
+              <i class="fa-solid fa-envelope"></i>
+              <a href="mailto:info@craftrix.com" target="_blank">info@craftrix.com</a>
               </li>
             </ul>
-              </div>
-            </div>
-            <div class="col-md-4">
-              <div class="contact-info">
-                 <h3 class="mt-4">Address</h3>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="contact-info">
+            <h3 class="mt-4">Address</h3>
             <ul>
               <li>
                 <i class="fa-solid fa-thumbtack"></i>
@@ -185,12 +146,9 @@
                   Udarasiromani Rd, Thiruvananthapuram, Kerala 695010</a>
               </li>
             </ul>
-              </div>
-            </div>
           </div>
-        </div> -->
+        </div>
       </div>
-      
 
     </div>
   </section>
@@ -201,7 +159,7 @@
   </section>
 
 
-   <footer>
+  <footer>
     <div class="container">
       <div class="row">
         <div class="col-md-3 mb-4">
@@ -283,7 +241,8 @@
   </footer>
 
   <div class="whats-app">
-    <a href="https://wa.me/+918086488003?text=Hi%20there%20share%20your%20service%20details...!" target="_blank"><img src="assets/images/whatsapp.png" alt=""></a>
+    <a href="https://wa.me/+918086488003?text=Hi%20there%20please%20share%20your%20service%20details...!"
+      target="_blank"><img src="assets/images/whatsapp.png" alt=""></a>
   </div>
 
   <script src="assets/js/scripit.js"></script>
