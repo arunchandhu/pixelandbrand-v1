@@ -73,11 +73,11 @@
             <div class="contact-form">
               <h2>Message</h2>
               <form id="contactForm">
-                <input type="text" name="name" id="contactName" placeholder="Name" required>
-                <input type="email" name="email" id="contactEmail" placeholder="Email Address" required>
-                <input type="tel" name="phone" id="contactPhone" placeholder="Phone Number" pattern="\d{10}"
-                  maxlength="10" required>
-                <select name="service" id="contactService" required>
+                <div class="row">
+                  <div class="col-md-6"><input type="text" name="name" id="contactName" placeholder="Name" required autocomplete="off"></div>
+                  <div class="col-md-6"><input type="email" name="email" id="contactEmail" placeholder="Email Address" required autocomplete="off"></div>
+                  <div class="col-md-6"><input type="tel" name="phone" id="contactPhone" placeholder="Phone Number" pattern="\d{10}"maxlength="10" required autocomplete="off"></div>
+                  <div class="col-md-6"><select name="service" id="contactService" required>
                   <option value="" disabled selected hidden>-- Select a service --</option>
                   <option value="branding">Branding</option>
                   <option value="smm">Social Media</option>
@@ -86,9 +86,12 @@
                   <option value="video">Video</option>
                   <option value="dms">Digital Strategy</option>
                   <option value="other">Other</option>
-                </select>
+                </select></div>
+                
+                
                 <input type="text" name="website" style="display:none" autocomplete="off">
                 <div class="g-recaptcha mb-4" data-sitekey="YOUR_SITE_KEY"></div>
+                </div>
                 <button type="submit">Contact Us</button>
               </form>
 
