@@ -169,9 +169,11 @@ input[type="text"] {
 img{
   display: block;
   width: 100%;
-  transition: 0.3s ease;
+  transform-origin: top;
+  transition: transaction 0.3s ease;
   
 }
+
 
 ul,
 li,
