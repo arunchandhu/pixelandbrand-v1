@@ -70,3 +70,52 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // Year
 document.getElementById("year").innerHTML = new Date().getFullYear();
+
+// ===========================
+// Email Service
+// ===========================
+
+// POST helper
+  async function postData(url, data) {
+    const res = await fetch(url, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data),
+    });
+    return res.json();
+  }
+
+  // Contact Form Submit
+  document.getElementById("contactForm").addEventListener("submit", function (e) {
+    e.preventDefault();
+    grecaptcha.ready(function () {
+      grecaptcha.execute("YOUR_SITE_KEY", { action: "submit" }).then(async function (token) {
+        const data = {
+          name: document.getElementById("contactName").value,
+          email: document.getElementById("contactEmail").value,
+          phone: document.getElementById("contactPhone").value,
+          service: document.getElementById("contactService").value,
+          website: document.querySelector("#contactForm input[name='website']").value,
+          recaptchaToken: token
+        };
+        const result = await postData("http://localhost:3000/contact", data);
+        if (result.redirect) window.location.href = result.redirect;
+      });
+    });
+  });
+
+  // Subscribe Form Submit
+  document.getElementById("subscribeForm").addEventListener("submit", function (e) {
+    e.preventDefault();
+    grecaptcha.ready(function () {
+      grecaptcha.execute("YOUR_SITE_KEY", { action: "submit" }).then(async function (token) {
+        const data = {
+          email: document.getElementById("subscribeEmail").value,
+          website: document.querySelector("#subscribeForm input[name='website']").value,
+          recaptchaToken: token
+        };
+        const result = await postData("http://localhost:3000/subscribe", data);
+        if (result.redirect) window.location.href = result.redirect;
+      });
+    });
+  });

@@ -1,83 +1,43 @@
 const express = require("express");
 const nodemailer = require("nodemailer");
 const cors = require("cors");
-const rateLimit = require("express-rate-limit");
+const bodyParser = require("body-parser");
+const axios = require("axios");
 
 const app = express();
 app.use(cors());
-app.use(express.json());
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
-// Rate limiting to prevent spam: max 5 requests per 10 minutes per IP
-const limiter = rateLimit({
-  windowMs: 10 * 60 * 1000,
-  max: 5,
-  message: "Too many requests, please try again later.",
-});
-app.use(limiter);
-
-// Nodemailer setup — use your Gmail & App Password here
 const transporter = nodemailer.createTransport({
   service: "gmail",
   auth: {
-    user: "chandhuarun120@gmail.com",
-    pass: "yourapppassword",
+    user: "chandhuarun120@gmail.com",           // Your Gmail address
+    pass: "qmilpoispccvghac",             // Your Gmail App Password
   },
 });
 
-// Spam check helper: returns true if honeypot field is filled (bot)
-function isSpam(body) {
-  return body.website && body.website.trim() !== "";
+// Helper: Honeypot check
+function isSpam(reqBody) {
+  return reqBody.website && reqBody.website.trim() !== "";
 }
 
-// Endpoint for subscription form (only email)
-app.post("/subscribe", async (req, res) => {
-  const { email, website } = req.body;
+// Helper: Verify reCAPTCHA
+async function verifyRecaptcha(token) {
+  const secret = "YOUR_RECAPTCHA_SECRET_KEY";
+  const response = await axios.post(`https://www.google.com/recaptcha/api/siteverify?secret=${secret}&response=${token}`);
+  return response.data.success;
+}
 
-  if (isSpam(req.body)) {
-    return res.status(400).send("Spam detected.");
-  }
-
-  if (!email || !/\S+@\S+\.\S+/.test(email)) {
-    return res.status(400).send("Invalid email.");
-  }
-
-  const mailOptions = {
-    from: "yourgmail@gmail.com",
-    to: "chandhuarun120@gmail.com",
-    subject: "New Subscription",
-    text: `New subscriber: ${email}`,
-  };
-
-  try {
-    await transporter.sendMail(mailOptions);
-    res.send("Subscription email sent!");
-  } catch (error) {
-    console.error(error);
-    res.status(500).send("Failed to send subscription email.");
-  }
-});
-
-// Endpoint for contact form (name, email, phone, service)
+// Handle contact form
 app.post("/contact", async (req, res) => {
-  const { name, email, phone, service, website } = req.body;
+  const { name, email, phone, service, website, recaptchaToken } = req.body;
 
-  if (isSpam(req.body)) {
-    return res.status(400).send("Spam detected.");
-  }
-
-  if (
-    !name ||
-    !email ||
-    !phone ||
-    !service ||
-    !/\S+@\S+\.\S+/.test(email) ||
-    !/^\d{10}$/.test(phone)
-  ) {
-    return res.status(400).send("Please fill out all fields correctly.");
-  }
+  if (isSpam(req.body)) return res.status(400).send("Spam detected.");
+  if (!(await verifyRecaptcha(recaptchaToken))) return res.status(400).send("reCAPTCHA failed.");
 
   const mailOptions = {
-    from: "yourgmail@gmail.com",
+    from: email,
     to: "chandhuarun120@gmail.com",
     subject: "New Contact Form Submission",
     text: `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\nService: ${service}`,
@@ -85,14 +45,34 @@ app.post("/contact", async (req, res) => {
 
   try {
     await transporter.sendMail(mailOptions);
-    res.send("Contact form email sent!");
+    res.status(200).json({ redirect: "/thanks.html" });
   } catch (error) {
-    console.error(error);
-    res.status(500).send("Failed to send contact form email.");
+    console.error("Error sending email:", error);
+    res.status(500).send("Failed to send email.");
   }
 });
 
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
+// Handle subscribe form
+app.post("/subscribe", async (req, res) => {
+  const { email, website, recaptchaToken } = req.body;
+
+  if (isSpam(req.body)) return res.status(400).send("Spam detected.");
+  if (!(await verifyRecaptcha(recaptchaToken))) return res.status(400).send("reCAPTCHA failed.");
+
+  const mailOptions = {
+    from: email,
+    to: "chandhuarun120@gmail.com",
+    subject: "New Subscription",
+    text: `New subscriber: ${email}`,
+  };
+
+  try {
+    await transporter.sendMail(mailOptions);
+    res.status(200).json({ redirect: "/thanks.html" });
+  } catch (error) {
+    console.error("Error sending subscription:", error);
+    res.status(500).send("Failed to send email.");
+  }
 });
+
+app.listen(3000, () => console.log("Server running on http://localhost:3000"));
