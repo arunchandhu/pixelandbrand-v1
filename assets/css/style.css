@@ -166,6 +166,11 @@ input[type="text"] {
 .service-page {
   padding: 50px 0;
 }
+img{
+  display: block;
+  width: 100%;
+  transition: 0.3s ease;
+}
 
 ul,
 li,
