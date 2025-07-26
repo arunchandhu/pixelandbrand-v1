@@ -24,7 +24,7 @@ function isSpam(reqBody) {
 
 // Helper: Verify reCAPTCHA
 async function verifyRecaptcha(token) {
-  const secret = "YOUR_RECAPTCHA_SECRET_KEY";
+  const secret = "6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe";
   const response = await axios.post(`https://www.google.com/recaptcha/api/siteverify?secret=${secret}&response=${token}`);
   return response.data.success;
 }
