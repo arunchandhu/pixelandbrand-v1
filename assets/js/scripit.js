@@ -1,44 +1,25 @@
 document.addEventListener("DOMContentLoaded", () => {
   // Safe element selection
   const navBar = document.querySelector("nav");
-  const logoFirst = document.querySelector(".logo.first");
-  const logoSecond = document.querySelector(".logo.second");
   const navList = document.querySelector(".nav-list ul");
   const toggleBtn = document.querySelector(".toggle");
   const closeBtn = document.querySelector(".close");
   const scrollBtn = document.getElementById("scrollBtn");
   const dropDownList = document.querySelector(".drop-down-list");
   const mobileMenu = document.querySelector(".mobile-menu");
-  const mobileDropDown = document.querySelector(".mobile-drop-down");
-  const mobileDropDownList = document.querySelector(".mobile-drop-down-list");
 
- 
-
-  toggleBtn.addEventListener("click", ()=>{
-    mobileMenu.classList.toggle('open')
-  })
-
-  // mobile Service drop down
-   mobileDropDown.addEventListener("click", () => {
-    mobileDropDownList.classList.toggle("open");
+  toggleBtn.addEventListener("click", () => {
+    mobileMenu.classList.toggle("open");
   });
 
-  // Navbar scroll behavior
-  if (navBar && logoFirst && logoSecond) {
-    window.addEventListener("scroll", () => {
-      if (window.scrollY > 50) {
-        navBar.classList.add("color");
-        logoFirst.classList.add("close");
-        logoSecond.classList.add("open");
-        dropDownList.classList.add("color");
-      } else {
-        navBar.classList.remove("color");
-        logoFirst.classList.remove("close");
-        logoSecond.classList.remove("open");
-        dropDownList.classList.remove("color");
-      }
-    });
-  }
+
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 50) {
+      navBar.classList.add("color");
+    } else {
+      navBar.classList.remove("color");
+    }
+  });
 
   // Scroll-to-top button
   if (scrollBtn) {
@@ -91,18 +72,22 @@ if (contactForm) {
   contactForm.addEventListener("submit", function (e) {
     e.preventDefault();
     grecaptcha.ready(function () {
-      grecaptcha.execute("YOUR_SITE_KEY", { action: "submit" }).then(async function (token) {
-        const data = {
-          name: document.getElementById("contactName").value,
-          email: document.getElementById("contactEmail").value,
-          phone: document.getElementById("contactPhone").value,
-          service: document.getElementById("contactService").value,
-          website: document.querySelector("#contactForm input[name='website']").value,
-          recaptchaToken: token
-        };
-        const result = await postData("http://localhost:3000/contact", data);
-        if (result.redirect) window.location.href = result.redirect;
-      });
+      grecaptcha
+        .execute("YOUR_SITE_KEY", { action: "submit" })
+        .then(async function (token) {
+          const data = {
+            name: document.getElementById("contactName").value,
+            email: document.getElementById("contactEmail").value,
+            phone: document.getElementById("contactPhone").value,
+            service: document.getElementById("contactService").value,
+            website: document.querySelector(
+              "#contactForm input[name='website']"
+            ).value,
+            recaptchaToken: token,
+          };
+          const result = await postData("http://localhost:3000/contact", data);
+          if (result.redirect) window.location.href = result.redirect;
+        });
     });
   });
 }
@@ -113,15 +98,22 @@ if (subscribeForm) {
   subscribeForm.addEventListener("submit", function (e) {
     e.preventDefault();
     grecaptcha.ready(function () {
-      grecaptcha.execute("YOUR_SITE_KEY", { action: "submit" }).then(async function (token) {
-        const data = {
-          email: document.getElementById("subscribeEmail").value,
-          website: document.querySelector("#subscribeForm input[name='website']").value,
-          recaptchaToken: token
-        };
-        const result = await postData("http://localhost:3000/subscribe", data);
-        if (result.redirect) window.location.href = result.redirect;
-      });
+      grecaptcha
+        .execute("YOUR_SITE_KEY", { action: "submit" })
+        .then(async function (token) {
+          const data = {
+            email: document.getElementById("subscribeEmail").value,
+            website: document.querySelector(
+              "#subscribeForm input[name='website']"
+            ).value,
+            recaptchaToken: token,
+          };
+          const result = await postData(
+            "http://localhost:3000/subscribe",
+            data
+          );
+          if (result.redirect) window.location.href = result.redirect;
+        });
     });
   });
 }

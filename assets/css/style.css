@@ -242,26 +242,10 @@ nav.color {
 }
 
 /* Show first logo by default */
-nav .logo.first img {
+nav .logo img {
   width: 100px;
   display: block;
 
-}
-
-/* Hide first logo when .close class is added */
-nav .logo.first.close {
-  display: none;
-}
-
-/* Hide second logo by default */
-nav .logo.second img {
-  display: none;
-}
-
-/* Show second logo when .open class is added */
-nav .logo.second.open img {
-  display: block;
-  width: 50px;
 }
 
 
