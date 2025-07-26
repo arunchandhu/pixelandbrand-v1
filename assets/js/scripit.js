@@ -117,3 +117,40 @@ if (subscribeForm) {
     });
   });
 }
+// ===========================
+// Email Service End
+// ===========================
+
+
+// ===========================
+// Email Service Home Activate
+// ===========================
+
+
+document.addEventListener("DOMContentLoaded", function () {
+  const form = document.getElementById("subscribeForm");
+  if (!form) return;
+
+  const emailInput = form.querySelector("input[name='email']");
+  const recaptchaBox = document.getElementById("recaptcha-container");
+  if (!emailInput || !recaptchaBox) return;
+
+  function updateRecaptcha() {
+    if (document.activeElement === emailInput || emailInput.value.trim() !== "") {
+      recaptchaBox.classList.add("visible");
+    } else {
+      recaptchaBox.classList.remove("visible");
+    }
+  }
+
+  emailInput.addEventListener("focus", updateRecaptcha);
+  emailInput.addEventListener("input", updateRecaptcha);
+  emailInput.addEventListener("blur", () => {
+    setTimeout(updateRecaptcha, 150);
+  });
+});
+
+
+// ===========================
+// Email Service Home Activate
+// ===========================

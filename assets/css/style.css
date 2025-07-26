@@ -210,9 +210,6 @@ a {
   padding: 50px 0;
 }
 
-div {
-  height: 100%;
-}
 
 nav {
   position: fixed;
@@ -415,8 +412,16 @@ section {
   border: none;
   outline: none;
 }
-#subscribeForm span{
-  max-width: 300px;
+#subscribeForm #recaptcha-container {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: opacity 0.4s ease, max-height 0.4s ease;
+}
+
+#subscribeForm #recaptcha-container.visible {
+  max-height: 200px;
+  opacity: 1;
 }
 #subscribeForm input::placeholder {
   padding-left: 10px;
