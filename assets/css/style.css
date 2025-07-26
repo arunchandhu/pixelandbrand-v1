@@ -408,14 +408,16 @@ section {
 }
 
 
-#subscribeForm input {
+#subscribeForm input{
   max-width: 300px;
   width: 100%;
   padding: 20px 20px;
   border: none;
   outline: none;
 }
-
+#subscribeForm span{
+  max-width: 300px;
+}
 #subscribeForm input::placeholder {
   padding-left: 10px;
 }
